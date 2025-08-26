@@ -1,59 +1,69 @@
--- Добавляем исполнителей
-INSERT INTO Artist (name) VALUES
-    ('Imagine Dragons'),
-    ('Lana Del Rey'),
-    ('The Weeknd'),
-    ('Billie Eilish');
+-- Добавление исполнителей (Artist)
+INSERT INTO Artist (Name) VALUES
+  ('The Weeknd'),
+  ('Imagine Dragons'),
+  ('Нервы'),
+  ('Макс Корж'),
+  ('Rammstein');
 
--- Добавляем жанры
-INSERT INTO Genre (name) VALUES
-    ('Pop'),
-    ('Rock'),
-    ('Alternative R&B');
+-- Добавление жанров (Genre)
+INSERT INTO Genre (Name) VALUES
+  ('Pop'),
+  ('Rock'),
+  ('Hip-Hop'),
+  ('Electronic');
 
--- Связываем исполнителей с жанрами (у некоторых несколько жанров)
-INSERT INTO ArtistGenre (artistid, genreid) VALUES
-    (1, 1), (1, 2), -- Imagine Dragons - Pop, Rock
-    (2, 1),         -- Lana Del Rey - Pop
-    (3, 3),         -- The Weeknd - Alternative R&B
-    (4, 1);         -- Billie Eilish - Pop
+-- Связь исполнителей и жанров (ArtistGenre)
+INSERT INTO ArtistGenre (ArtistID, GenreID)
+VALUES
+  (1, 1), -- The Weeknd -> Pop
+  (2, 2), -- Imagine Dragons -> Rock
+  (2, 4), -- Imagine Dragons -> Electronic
+  (3, 2), -- Нервы -> Rock
+  (4, 3), -- Макс Корж -> Hip-Hop
+  (5, 2); -- Rammstein -> Rock
 
--- Добавляем альбомы
-INSERT INTO Album (title, year) VALUES
-    ('Night Visions', 2012),
-    ('Born To Die', 2012),
-    ('After Hours', 2020);
+-- Добавление альбомов (Album)
+INSERT INTO Album (Title, Year) VALUES
+  ('After Hours', 2020),
+  ('Evolve', 2017),
+  ('Нервы', 2021),
+  ('Микс сборник 2019', 2019);
 
--- Связываем исполнителей с альбомами
-INSERT INTO ArtistAlbum (artistid, albumid) VALUES
-    (1, 1), -- Imagine Dragons - Night Visions
-    (2, 2), -- Lana Del Rey - Born To Die
-    (3, 3), -- The Weeknd - After Hours
-    (4, 3); -- Billie Eilish feat. на альбоме After Hours
+-- Связь исполнителей и альбомов (ArtistAlbum)
+INSERT INTO ArtistAlbum (ArtistID, AlbumID)
+VALUES
+  (1, 1), -- The Weeknd -> After Hours
+  (2, 2), -- Imagine Dragons -> Evolve
+  (3, 3), -- Нервы -> Нервы
+  (2, 4), -- Imagine Dragons -> Микс сборник 2019
+  (1, 4); -- The Weeknd -> Микс сборник 2019
 
--- Добавляем треки
-INSERT INTO Track (albumid, title, duration) VALUES
-    (1, 'Radioactive', 187),
-    (1, 'Demons', 175),
-    (2, 'Video Games', 282),
-    (2, 'Summertime Sadness', 265),
-    (3, 'Blinding Lights', 200),
-    (3, 'In Your Eyes', 237);
+-- Добавление треков (Track)
+INSERT INTO Track (Title, Duration, AlbumID) VALUES
+  ('Blinding Lights', 202, 1), 
+  ('Save Your Tears', 215, 1),  
+  ('Believer', 204, 2),         
+  ('Кури бамбук', 163, 3),      
+  ('Мой путь', 248, 3),         
+  ('My Demons', 237, 2),        
+  ('Radioactive', 187, 2), 
+  ('Мой город', 220, 4);   
 
--- Добавляем сборники
-INSERT INTO Collection (title, year) VALUES
-    ('Best Pop Hits 2012', 2013),
-    ('Chill Vibes', 2020),
-    ('Road Trip Mix', 2021),
-    ('The Weeknd Essentials', 2020);
+-- Добавление сборников (Collection)
+INSERT INTO Collection (Title, Year) VALUES
+  ('Top Hits 2018', 2018),
+  ('Микс сборник 2019', 2019),
+  ('Hits of the Year 2020', 2020),
+  ('Best of Rock', 2019);
 
--- Связываем сборники с треками
-INSERT INTO TrackCollection (collectionid, trackid) VALUES
-    (1, 1), -- Best Pop Hits -> Radioactive
-    (1, 3), -- Best Pop Hits -> Video Games
-    (2, 3), -- Chill Vibes -> Video Games
-    (2, 4), -- Chill Vibes -> Summertime Sadness
-    (3, 5), -- Road Trip Mix -> Blinding Lights
-    (3, 6), -- Road Trip Mix -> In Your Eyes
-    (4, 5), -- The Weeknd Essentials -> Blinding Lights
-    (4, 6); -- The Weeknd Essentials -> In Your Eyes
+-- Связь треков и сборников (TrackCollection)
+INSERT INTO TrackCollection (TrackID, CollectionID)
+VALUES
+  (1, 3), -- Blinding Lights -> Hits of the Year 2020
+  (2, 1), -- Save Your Tears -> Top Hits 2018
+  (2, 3), -- Save Your Tears -> Hits of the Year 2020
+  (3, 1), -- Believer -> Top Hits 2018
+  (3, 4), -- Believer -> Best of Rock
+  (7, 4), -- Radioactive -> Best of Rock
+  (8, 2); -- Мой город -> Микс сборник 2019

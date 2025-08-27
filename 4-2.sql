@@ -23,6 +23,19 @@ FROM Artist
 WHERE name NOT LIKE '% %' AND name NOT LIKE '%-%';
 
 -- Название треков, которые содержат слово «мой» или «my».
+-- Доработанный вариант
+SELECT Title
+FROM Track
+WHERE Title ILIKE 'мой %' /* Где слово в начале строки */
+OR Title ILIKE '% мой'    /* Где слово в конце строки */
+OR Title ILIKE '% мой %'  /* Где слово в середине строки */
+OR Title ILIKE 'мой'  /* Где название трека состоит из одного искомого слова */
+OR Title ILIKE 'my %'     /* Где слово в начале строки */
+OR Title ILIKE '% my'     /* Где слово в конце строки */
+OR Title ILIKE '% my %'   /* Где слово в середине строки */
+OR Title ILIKE 'my';       /* Где название трека состоит из одного искомого слова */
+
+-- Название треков, которые содержат слово «мой» или «my».
 SELECT Title
 FROM Track
 WHERE LOWER(Title) LIKE '%мой%' OR LOWER(Title) LIKE '%my%';

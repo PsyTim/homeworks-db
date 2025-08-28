@@ -50,6 +50,20 @@ INSERT INTO Track (Title, Duration, AlbumID) VALUES
   ('Radioactive', 187, 2), 
   ('Мой город', 220, 4);   
 
+-- Дополнительные треки для проверки доработанного варианта
+INSERT INTO Track (Title, Duration, AlbumID) VALUES
+	('myself', 0, 6),
+	('by myself', 0, 6),
+	('bemy self', 0, 6),
+	('myself by', 0, 6),
+	('by myself by', 0, 6),
+	('beemy', 0, 6),
+	('premyne', 0, 6),
+	('my own', 0, 6),
+	('own my', 0, 6),
+	('my', 0, 6),
+	('oh my god', 0, 6);
+
 -- Добавление сборников (Collection)
 INSERT INTO Collection (Title, Year) VALUES
   ('Top Hits 2018', 2018),

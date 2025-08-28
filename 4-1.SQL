@@ -30,6 +30,9 @@ INSERT INTO Album (Title, Year) VALUES
   ('Нервы', 2021),
   ('Микс сборник 2019', 2019);
 
+-- Дополнительный альбом для проверки доработанного варианта
+INSERT INTO Album (AlbumId, Title, "Year") VALUES(6, 'My songs)', 0);
+
 -- Связь исполнителей и альбомов (ArtistAlbum)
 INSERT INTO ArtistAlbum (ArtistID, AlbumID)
 VALUES
